@@ -28,3 +28,7 @@ local.properties
 
 .idea/workspace.xml
 project.properties
+
+.idea/tasks.xml
+
+*.iws
