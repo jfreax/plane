@@ -1,6 +1,8 @@
 package de.jdsoft.plane;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -19,6 +21,9 @@ public class MyActor extends Actor {
     public void draw (SpriteBatch batch, float parentAlpha) {
         batch.end();
 
+        Gdx.gl.glEnable(GL10.GL_BLEND);
+        Gdx.gl.glBlendFunc(GL10.GL_SRC_ALPHA,GL10.GL_ONE_MINUS_SRC_ALPHA);
+
         renderer.setProjectionMatrix(batch.getProjectionMatrix());
         renderer.setTransformMatrix(batch.getTransformMatrix());
         renderer.translate(getX(), getY(), 0);
@@ -26,9 +31,11 @@ public class MyActor extends Actor {
         renderer.rotate(0, 0, 1, 45.0f);
 
         renderer.begin(ShapeRenderer.ShapeType.Filled);
-        renderer.setColor(Color.BLUE);
-        renderer.rect(0, 0, 100, 100);
+        renderer.setColor(getColor());
+        renderer.rect(0, 0, getWidth(), getHeight() / 2.f);
         renderer.end();
+
+        Gdx.gl.glDisable(GL10.GL_BLEND);
 
         batch.begin();
 
