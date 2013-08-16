@@ -1,4 +1,4 @@
-package de.jdsoft.plane;
+package de.jdsoft.plane.draw;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -10,11 +10,11 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
-public class MyActor extends Actor {
+public class TileGround extends Actor {
 
     private final ShapeRenderer renderer;
 
-    public MyActor () {
+    public TileGround() {
         renderer = new ShapeRenderer();
     }
 
@@ -26,13 +26,13 @@ public class MyActor extends Actor {
 
         renderer.setProjectionMatrix(batch.getProjectionMatrix());
         renderer.setTransformMatrix(batch.getTransformMatrix());
-        renderer.translate(getX(), getY(), 0);
         renderer.scale(1, 0.5f, 1);
         renderer.rotate(0, 0, 1, 45.0f);
+        renderer.translate(getX(), getY(), 0);
 
         renderer.begin(ShapeRenderer.ShapeType.Filled);
         renderer.setColor(getColor());
-        renderer.rect(0, 0, getWidth(), getHeight() / 2.f);
+        renderer.rect(0, 0, getWidth(), getHeight());
         renderer.end();
 
         Gdx.gl.glDisable(GL10.GL_BLEND);
