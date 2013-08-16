@@ -1,16 +1,17 @@
 package de.jdsoft.plane.Input;
 
 import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector3;
 
 public class OrthoCamController extends InputAdapter {
-    final OrthographicCamera camera;
+    final Camera camera;
     final Vector3 curr = new Vector3();
     final Vector3 last = new Vector3(-1, -1, -1);
     final Vector3 delta = new Vector3();
 
-    public OrthoCamController (OrthographicCamera camera) {
+    public OrthoCamController (Camera camera) {
         this.camera = camera;
     }
 
