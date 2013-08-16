@@ -5,66 +5,41 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapTileSet;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
-import com.badlogic.gdx.utils.Pool;
 import com.badlogic.gdx.utils.TimeUtils;
 import de.jdsoft.plane.Input.GlobalInput;
 import de.jdsoft.plane.Input.OrthoCamController;
-import de.jdsoft.plane.MyActor;
+import de.jdsoft.plane.draw.TileGround;
+import de.jdsoft.plane.sprite.Ground;
 
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.*;
 
 public class Universe implements Screen {
 
     private final GlobalInput globalInput;
-    private TiledMap map;
-
     private Stage stage;
 
-
-    ShapeRenderer shapeRenderer = new ShapeRenderer();
-
-;
-    OrthographicCamera cam;
-    OrthoCamController camController;
-    long startTime = TimeUtils.nanoTime();
-
     public Universe() {
-        cam = new OrthographicCamera(480, 320);
-        cam.update();
-
         // Initialize input controller
         globalInput = new GlobalInput();
 
 
         stage = new Stage();
-        stage.setCamera(cam);
 
-        // Example actor
-        MyActor actor = new MyActor();
-        actor.setX(100);
-        actor.setY(100);
-        actor.setHeight(50);
-        actor.setWidth(30);
-
-        actor.setColor(new Color(0, 0, 1, 0.0f));
-        actor.addAction(parallel(moveBy(0, 8, 2), fadeIn(2)));
-
-        // Add example to stage
-        stage.addActor(actor);
+        Ground ground1 = new Ground(stage, 0, 0);
+        Ground ground2 = new Ground(stage, 1, 1);
+        Ground ground3 = new Ground(stage, 1, 0);
+        Ground ground4 = new Ground(stage, 2, 0);
+        Ground ground5 = new Ground(stage, 3, 0);
 
         // Stage input processor
         globalInput.addProcessor(stage);
 
         // Add camera controller as last controller!
-        globalInput.addProcessor(new OrthoCamController(cam));
+        globalInput.addProcessor(new OrthoCamController(stage.getCamera()));
 
     }
 
@@ -78,7 +53,10 @@ public class Universe implements Screen {
     }
     @Override
     public void resize(int width, int height) {
-        stage.setViewport(width, height, true);
+        //stage.setViewport(width, height, true);
+
+        stage.setViewport(480, 320, true);
+        stage.getCamera().translate(-stage.getGutterWidth(), -stage.getGutterHeight(), 0);
 
     }
 
