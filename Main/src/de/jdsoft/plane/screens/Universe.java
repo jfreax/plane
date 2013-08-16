@@ -8,7 +8,9 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Interpolation;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.TimeUtils;
 import de.jdsoft.plane.Input.GlobalInput;
 import de.jdsoft.plane.Input.OrthoCamController;
@@ -53,11 +55,13 @@ public class Universe implements Screen {
     }
     @Override
     public void resize(int width, int height) {
-        //stage.setViewport(width, height, true);
-
-        stage.setViewport(480, 320, true);
-        stage.getCamera().translate(-stage.getGutterWidth(), -stage.getGutterHeight(), 0);
-
+        Vector2 size = Scaling.fit.apply(480, 800, width, height);
+        int viewportX = (int)(width - size.x) / 2;
+        int viewportY = (int)(height - size.y) / 2;
+        int viewportWidth = (int)size.x;
+        int viewportHeight = (int)size.y;
+        Gdx.gl.glViewport(viewportX, viewportY, viewportWidth, viewportHeight);
+        stage.setViewport(800, 480, true, viewportX, viewportY, viewportWidth, viewportHeight);
     }
 
     @Override
