@@ -1,8 +1,7 @@
-package de.jdsoft.plane.Input;
+package de.jdsoft.plane.input;
 
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.Camera;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector3;
 
 public class OrthoCamController extends InputAdapter {

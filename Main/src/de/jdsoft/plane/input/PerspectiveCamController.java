@@ -1,4 +1,4 @@
-package de.jdsoft.plane.Input;
+package de.jdsoft.plane.input;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;

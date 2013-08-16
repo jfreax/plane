@@ -2,22 +2,13 @@ package de.jdsoft.plane.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Scaling;
-import com.badlogic.gdx.utils.TimeUtils;
-import de.jdsoft.plane.Input.GlobalInput;
-import de.jdsoft.plane.Input.OrthoCamController;
-import de.jdsoft.plane.draw.TileGround;
+import de.jdsoft.plane.input.GlobalInput;
+import de.jdsoft.plane.input.OrthoCamController;
 import de.jdsoft.plane.sprite.Ground;
-
-import static com.badlogic.gdx.scenes.scene2d.actions.Actions.*;
 
 public class Universe implements Screen {
 
