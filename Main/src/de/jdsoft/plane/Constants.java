@@ -8,5 +8,6 @@ public interface Constants {
     static final int tileSizeHeight = 64;
     static final int tileGap = 3;
 
-    static final Color colorPath = new Color(0.286f, 0.4f, 0.58f, 0.f);
+    static final Color colorHome = new Color(0.286f, 0.4f, 0.58f, 0.f);
+    static final Color colorPath = new Color(0.286f, 0.25f, 0.215f, 0.f);
 }
