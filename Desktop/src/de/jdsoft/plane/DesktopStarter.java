@@ -11,6 +11,7 @@ public class DesktopStarter {
         cfg.useGL20 = false;
         cfg.width = 480;
         cfg.height = 800;
+        cfg.samples = 2;
         new LwjglApplication(new PlaneGame(), cfg);
     }
 }
