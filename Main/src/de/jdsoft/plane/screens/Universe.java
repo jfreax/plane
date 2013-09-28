@@ -3,8 +3,11 @@ package de.jdsoft.plane.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Scaling;
 import de.jdsoft.plane.input.GlobalInput;
@@ -24,10 +27,27 @@ public class Universe implements Screen {
 
         stage = new Stage();
 
-        new Path(stage, 0, 0);
-        new Path(stage, 1, 0);
-        new Path(stage, 2, 0);
-        new Path(stage, 0, 1);
+        //PerspectiveCamera cam = new PerspectiveCamera(67, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        OrthographicCamera cam = (OrthographicCamera)stage.getCamera();
+        //cam.position.set(0f, 0f, 1000f);
+        //cam.lookAt(0,500,0);
+        //cam.near = 0.1f;
+        //cam.far = 3000f;
+        cam.update();
+
+
+//        new Path(stage, 0, 0);
+//        new Path(stage, 1, 0);
+//        new Path(stage, 2, 0);
+//        new Path(stage, 0, 1);
+
+
+
+        for(int x = 0; x < 16; x++) {
+            for( int y = 0; y < 16; y++ ) {
+                new Path(stage, x, y);
+            }
+        }
 
         //stage.getCamera().position.add(1000);
         //stage.getCamera().update();
